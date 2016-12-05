@@ -115,7 +115,9 @@ module.provider("$mdpDatePicker", function() {
         var datePicker = function(currentDate, options) {
             if (!angular.isDate(currentDate)) currentDate = Date.now();
             if (!angular.isObject(options)) options = {};
-            
+
+            if (options.labelCancel) LABEL_CANCEL = options.labelCancel;
+            if (options.labelOk) LABEL_OK = options.labelOk;
             options.displayFormat = DISPLAY_FORMAT;
     
             return $mdDialog.show({
