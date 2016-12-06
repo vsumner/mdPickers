@@ -116,10 +116,14 @@ module.provider("$mdpDatePicker", function() {
             if (!angular.isDate(currentDate)) currentDate = Date.now();
             if (!angular.isObject(options)) options = {};
 
-            console.log(options);
             if (options.labelCancel) LABEL_CANCEL = options.labelCancel;
             if (options.labelOk) LABEL_OK = options.labelOk;
-            options.displayFormat = DISPLAY_FORMAT;
+            if (options.displayFormat){
+                DISPLAY_FORMAT = options.displayFormat;
+            }
+            else{
+                options.displayFormat = DISPLAY_FORMAT;
+            }
     
             return $mdDialog.show({
                 controller:  ['$scope', '$mdDialog', '$mdMedia', '$timeout', 'currentDate', 'options', DatePickerCtrl],
@@ -350,7 +354,10 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
             "placeholder": "@mdpPlaceholder",
             "noFloat": "=mdpNoFloat",
             "openOnClick": "=mdpOpenOnClick",
-            "disabled": "=?mdpDisabled"
+            "disabled": "=?mdpDisabled",
+            "labelOk": "@mdpLabelOk",
+            "labelCancel": "@mdpLabelCancel",
+            "displayFormat": "@mdpDisplayFormat"
         },
         link: {
             pre: function(scope, element, attrs, ngModel, $transclude) {
@@ -450,6 +457,9 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
                 	    minDate: scope.minDate, 
                 	    maxDate: scope.maxDate,
                 	    dateFilter: scope.dateFilter,
+                        labelOk: scope.labelOk,
+                        labelCancel: scope.labelCancel,
+                        displayFormat: scope.displayFormat,
                 	    targetEvent: ev
             	    }).then(updateDate);
                 };
