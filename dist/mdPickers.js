@@ -411,14 +411,14 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
             "minDate": "=mdpMinDate",
             "maxDate": "=mdpMaxDate",
             "dateFilter": "=mdpDateFilter",
-            "dateFormat": "@mdpFormat",
+            "dateFormat": "=mdpFormat",
             "placeholder": "@mdpPlaceholder",
             "noFloat": "=mdpNoFloat",
             "openOnClick": "=mdpOpenOnClick",
             "disabled": "=?mdpDisabled",
-            "labelOk": "@mdpLabelOk",
-            "labelCancel": "@mdpLabelCancel",
-            "displayFormat": "@mdpDisplayFormat"
+            "labelOk": "=mdpLabelOk",
+            "labelCancel": "=mdpLabelCancel",
+            "displayFormat": "=mdpDisplayFormat"
         },
         link: {
             pre: function(scope, element, attrs, ngModel, $transclude) {
@@ -435,7 +435,7 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
                 
                 var messages = angular.element(inputContainer[0].querySelector("[ng-messages]"));
                 
-                scope.type = scope.dateFormat ? "text" : "date"
+                scope.type = scope.dateFormat ? "text" : "date";
                 scope.dateFormat = scope.dateFormat || "YYYY-MM-DD";
                 scope.model = ngModel;
                 
