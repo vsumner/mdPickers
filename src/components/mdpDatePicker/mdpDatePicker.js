@@ -113,7 +113,7 @@ module.provider("$mdpDatePicker", function() {
     
     this.$get = ["$mdDialog", function($mdDialog) {
         var datePicker = function(currentDate, options) {
-            if (!angular.isDate(currentDate)) currentDate = Date.now();
+            if (!moment(currentDate).isValid()) currentDate = Date.now();
             if (!angular.isObject(options)) options = {};
 
             if (options.labelCancel) LABEL_CANCEL = options.labelCancel;
@@ -384,7 +384,7 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
                 
                 // update input element if model has changed
                 ngModel.$formatters.unshift(function(value) {
-                    var date = angular.isDate(value) && moment(value);
+                    var date = moment(value);
                     if(date && date.isValid()) 
                         updateInputElement(date.format(scope.dateFormat));
                     else
