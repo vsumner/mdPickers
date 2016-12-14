@@ -350,14 +350,14 @@ module.directive("mdpDatePicker", ["$mdpDatePicker", "$timeout", function($mdpDa
             "minDate": "=mdpMinDate",
             "maxDate": "=mdpMaxDate",
             "dateFilter": "=mdpDateFilter",
-            "dateFormat": "=mdpFormat",
+            "dateFormat": "@mdpFormat",
             "placeholder": "@mdpPlaceholder",
             "noFloat": "=mdpNoFloat",
             "openOnClick": "=mdpOpenOnClick",
             "disabled": "=?mdpDisabled",
-            "labelOk": "=mdpLabelOk",
-            "labelCancel": "=mdpLabelCancel",
-            "displayFormat": "=mdpDisplayFormat"
+            "labelOk": "@mdpLabelOk",
+            "labelCancel": "@mdpLabelCancel",
+            "displayFormat": "@mdpDisplayFormat"
         },
         link: {
             pre: function(scope, element, attrs, ngModel, $transclude) {
