@@ -232,7 +232,7 @@ module.provider("$mdpTimePicker", function() {
                     time: time,
                     autoSwitch: options.autoSwitch
                 },
-                multiple: true
+                skipHide: true
             });
         };
     

@@ -220,7 +220,7 @@ module.provider("$mdpDatePicker", function() {
                     currentDate: currentDate,
                     options: options
                 },
-                multiple: true
+                skipHide: true
             });
         };
     
@@ -824,7 +824,7 @@ module.provider("$mdpTimePicker", function() {
                     time: time,
                     autoSwitch: options.autoSwitch
                 },
-                multiple: true
+                skipHide: true
             });
         };
     
