@@ -345,7 +345,7 @@ module.directive("mdpCalendar", ["$animate", function($animate) {
                     direction = "mdp-animate-prev";
                 
                 if(direction) {
-                    for(var i in animElements) {
+                    for(var i=0; i<animElements.length; i++) {
                         animElements[i].addClass(direction);
                         $animate.removeClass(animElements[i], direction);
                     }
